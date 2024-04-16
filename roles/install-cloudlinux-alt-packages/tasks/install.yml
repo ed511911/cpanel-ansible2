@@ -9,18 +9,18 @@
 
 - name: Ensure CloudLinux Alt-Packages Installed and updated
   yum:
-    name: "{{ item }}"
-    state: installed
+    name: "{{ item.name }}"
+    state: "{{ item.state }}"
     update_cache: yes
-    enablerepo: "cloudlinux-{{ ansible_architecture }}-server-{{ ansible_distribution_major_version  }}"
-  with_items:
-    - "@alt-php"
-    - alt-python-virtualenv
-    - alt-mod-passenger
-    - "@alt-python"
-    - "@alt-ruby"
-    - alt-python27-devel
-    - lve-stats
+    enablerepo: "cloudlinux-{{ ansible_architecture }}-server-{{ ansible_distribution_major_version }}"
+  loop:
+    - { name: "@alt-php", state: "installed" }
+    - { name: "alt-python-virtualenv", state: "absent" }
+    - { name: "alt-mod-passenger", state: "installed" }
+    - { name: "@alt-python", state: "absent" }
+    - { name: "@alt-ruby", state: "absent" }
+    - { name: "alt-python27-devel", state: "absent" }
+    - { name: "lve-stats", state: "installed" }
   tags: cloudlinux_alt
 
 - name: Maintain Aliases for 3rd party git in /etc/bashrc
