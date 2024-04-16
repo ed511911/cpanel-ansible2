@@ -5,7 +5,18 @@
   get_url:
     url: http://download.seinternal.com/integration/installers/cpanel/installer.sh
     dest: /tmp/spamexperts-installer.sh
-    mode: 644
+    mode: 0644
 
 - name: SpamExperts | Install Plugin
   command: sh /tmp/spamexperts-installer.sh
+
+- name: SpamExperts | Remove old settings.conf
+  file:
+    path: /etc/prospamfilter/settings.conf
+    state: absent
+
+- name: SpamExperts | Copy new settings.conf
+  copy:
+    src: /root/cpanelshared/settings.conf
+    dest: /etc/prospamfilter/settings.conf
+    mode: '0660'
