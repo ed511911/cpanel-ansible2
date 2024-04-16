@@ -19,11 +19,11 @@
     - { role: install-configserver-cmc, tags: [cmc], when: install_cmc == 'true' }
     - { role: install-configserver-cmm, tags: [cmm], when: install_cmm == 'true' }
     - { role: install-configserver-cmq, tags: [cmq], when: install_cmq == 'true' }
-    - { role: install-configserver-cse, tags: [cse], when: install_cse == 'true' }
-    - { role: install-configserver-cxs, tags: [cxs], when: install_cxs == 'true' }
+    - { role: install-configserver-cse, tags: [cse], when: install_cse == 'false' }
+    - { role: install-configserver-cxs, tags: [cxs], when: install_cxs == 'false' }
     - { role: install-softaculous, tags: [softaculous], when: install_softaculous == 'true' }
-    - { role: install-cloudflare, tags: [cloudflare], when: install_cloudflare == 'true' }
-    - { role: install-letsencrypt, tags: [letsencrypt], when: install_letsencrypt == 'true' }
+    - { role: install-cloudflare, tags: [cloudflare], when: install_cloudflare == 'false' }
+    - { role: install-letsencrypt, tags: [letsencrypt], when: install_letsencrypt == 'false' }
     - { role: install-spamexperts, tags: [spamexperts], when: install_spamexperts == 'true' }
     - { role: install-imunify, tags: [imunify], when: install_imunify == 'true' }
-    - { role: install-sitepad, tags: [sitepad], when: install_sitepad == 'true' }
+    - { role: install-sitepad, tags: [sitepad], when: install_sitepad == 'false' }
